@@ -14,3 +14,9 @@ def nav_courses_list():
     courses = Course.objects.all()
     return {'courses': courses}
 #We are including a template inside a template unlike including strings on a template. So registering this tag has a different way
+
+@register.filter('time_estimate')
+def time_estimate(word_count):
+    '''Estimates the number of minutes it will take to complete a step based on the passed-in wordcontent'''
+    minutes = round(word_count/20)
+    return minutes
